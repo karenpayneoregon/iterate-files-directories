@@ -40,10 +40,10 @@ namespace FrontendApp
             this.DirFolderCountTextBox = new System.Windows.Forms.TextBox();
             this.GetFolderFileCountButton = new System.Windows.Forms.Button();
             this.FolderTextBox2 = new System.Windows.Forms.TextBox();
-            this.searchOptionComboBox1 = new FrontendApp.Classes.SearchOptionComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.GetFileCountInDirectoryButton = new System.Windows.Forms.Button();
             this.FolderForFileCountTextBox = new System.Windows.Forms.TextBox();
+            this.GetFileCountInDirectoryButton = new System.Windows.Forms.Button();
+            this.searchOptionComboBox1 = new FrontendApp.Classes.SearchOptionComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -87,6 +87,7 @@ namespace FrontendApp
             this.FolderTextBox1.Size = new System.Drawing.Size(429, 23);
             this.FolderTextBox1.TabIndex = 2;
             this.FolderTextBox1.Text = "C:\\OED\\Dotnetland\\VS2019\\FolderSolution";
+            this.FolderTextBox1.TextChanged += new System.EventHandler(this.FolderTextBox1_TextChanged);
             // 
             // CancelButton1
             // 
@@ -147,19 +148,10 @@ namespace FrontendApp
             this.FolderTextBox2.TabIndex = 5;
             this.FolderTextBox2.Text = "C:\\OED\\Dotnetland\\VS2019\\FolderSolution";
             // 
-            // searchOptionComboBox1
-            // 
-            this.searchOptionComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.searchOptionComboBox1.FormattingEnabled = true;
-            this.searchOptionComboBox1.Location = new System.Drawing.Point(113, 35);
-            this.searchOptionComboBox1.Name = "searchOptionComboBox1";
-            this.searchOptionComboBox1.Size = new System.Drawing.Size(173, 23);
-            this.searchOptionComboBox1.TabIndex = 2;
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.FolderForFileCountTextBox);
             this.groupBox3.Controls.Add(this.searchOptionComboBox1);
+            this.groupBox3.Controls.Add(this.FolderForFileCountTextBox);
             this.groupBox3.Controls.Add(this.GetFileCountInDirectoryButton);
             this.groupBox3.Location = new System.Drawing.Point(19, 288);
             this.groupBox3.Name = "groupBox3";
@@ -167,6 +159,15 @@ namespace FrontendApp
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Count files in directory";
+            // 
+            // FolderForFileCountTextBox
+            // 
+            this.FolderForFileCountTextBox.Location = new System.Drawing.Point(113, 64);
+            this.FolderForFileCountTextBox.Name = "FolderForFileCountTextBox";
+            this.FolderForFileCountTextBox.PlaceholderText = "Enter a valid path for work with";
+            this.FolderForFileCountTextBox.Size = new System.Drawing.Size(413, 23);
+            this.FolderForFileCountTextBox.TabIndex = 8;
+            this.FolderForFileCountTextBox.Text = "C:\\OED\\Dotnetland\\VS2019\\FolderSolution";
             // 
             // GetFileCountInDirectoryButton
             // 
@@ -178,14 +179,14 @@ namespace FrontendApp
             this.GetFileCountInDirectoryButton.UseVisualStyleBackColor = true;
             this.GetFileCountInDirectoryButton.Click += new System.EventHandler(this.GetFileCountInDirectoryButton_Click);
             // 
-            // FolderForFileCountTextBox
+            // searchOptionComboBox1
             // 
-            this.FolderForFileCountTextBox.Location = new System.Drawing.Point(113, 64);
-            this.FolderForFileCountTextBox.Name = "FolderForFileCountTextBox";
-            this.FolderForFileCountTextBox.PlaceholderText = "Enter a valid path for work with";
-            this.FolderForFileCountTextBox.Size = new System.Drawing.Size(413, 23);
-            this.FolderForFileCountTextBox.TabIndex = 8;
-            this.FolderForFileCountTextBox.Text = "C:\\OED\\Dotnetland\\VS2019\\FolderSolution";
+            this.searchOptionComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.searchOptionComboBox1.FormattingEnabled = true;
+            this.searchOptionComboBox1.Location = new System.Drawing.Point(113, 34);
+            this.searchOptionComboBox1.Name = "searchOptionComboBox1";
+            this.searchOptionComboBox1.Size = new System.Drawing.Size(173, 23);
+            this.searchOptionComboBox1.TabIndex = 9;
             // 
             // Form1
             // 
@@ -221,10 +222,11 @@ namespace FrontendApp
         private System.Windows.Forms.Button GetFolderFileCountButton;
         private System.Windows.Forms.TextBox FolderTextBox2;
         private System.Windows.Forms.TextBox DirFolderCountTextBox;
-        private Classes.SearchOptionComboBox searchOptionComboBox1;
+
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox FolderForFileCountTextBox;
         private System.Windows.Forms.Button GetFileCountInDirectoryButton;
+        private Classes.SearchOptionComboBox searchOptionComboBox1;
     }
 }
 

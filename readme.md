@@ -260,6 +260,56 @@ public static void GenericSearch(string folderName, string[] includePatterns)
 }
 ```
 
+# Handling unauthorized acccess to folder
+
+![Access Denied](FrontendApp/assets/access_denied.png)
+
+There is always a chance that the user may not have read access to a directory, in those cases the simple solution is shown below.
+
+- Code is in FileOperations class in FolderHelpers
+- Is not asynchronous but for a rather large folder the unresponsiveness is acceptable but not for searching gigabytes or an entire drive.
+- See ExcelForm for an example which before running if you don't have any `.xlsx` files under your Document folder place some there and in sub-directories prior to running the code.
+
+```csharp
+    public IEnumerable<string> EnumerateFilesSafe(string directory, string searchPattern, SearchOption searchOption)
+    {
+        var list = Enumerable.Empty<string>();
+
+        if (searchOption == SearchOption.AllDirectories)
+        {
+            try
+            {
+                IEnumerable<string> childDirectories = Directory.EnumerateDirectories(directory);
+
+                list = childDirectories.Aggregate(list, (current, dir) =>
+                    current.Concat(EnumerateFilesSafe(dir, searchPattern, searchOption)));
+
+            }
+            catch (UnauthorizedAccessException unauthorized)
+            {
+                OnNoAccess?.Invoke(unauthorized.Message);
+            }
+            catch (PathTooLongException tooLong)
+            {
+                OnNoAccess?.Invoke(tooLong.Message);
+            }
+        }
+
+        try
+        {
+            list = list.Concat(Directory.EnumerateFiles(directory, searchPattern));
+        }
+        catch (UnauthorizedAccessException unauthorized)
+        {
+            OnNoAccess?.Invoke(unauthorized.Message);
+        }
+
+        Done?.Invoke();
+        return list;
+    }
+
+```
+
 # Use in your project
 
 1. Copy the project FolderHelpers to your solution.

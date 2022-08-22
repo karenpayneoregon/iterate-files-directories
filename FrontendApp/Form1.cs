@@ -13,6 +13,12 @@ using System.Windows.Forms.VisualStyles;
 using FolderHelpers.Classes;
 using FrontendApp.Classes;
 
+/*
+ * An odd thing happened at one point and may happen to you
+ * searchOptionComboBox1 disappeared when cloning it from the repo, had to remove it in code behind
+ * and add it back in.
+ */
+
 namespace FrontendApp
 {
     public partial class Form1 : Form
@@ -129,6 +135,11 @@ namespace FrontendApp
             {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void FolderTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
