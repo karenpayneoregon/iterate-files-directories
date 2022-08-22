@@ -1,4 +1,4 @@
-# Learn how to work with large folder for searching and more
+# How to work with large folder for searching and more
 
 
 This article focuses on how to perform a basic search through a folder structure in search of a specific pattern e.g. all text files, all .jpg files which keeps the front-end user interface response. There is code to show how to get a file count of files in a folder and also methods to return both folder and file count.
